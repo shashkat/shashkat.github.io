@@ -1,7 +1,7 @@
 # shashkat.github.io
 
 
-<img src="my pic.JPG" alt="Description for image" width="400" height="300">
+<img src="my pic.JPG" align="center" alt="Description for image" width="420" height="300">
 
 Hi guys, I am Shashank Katiyar!
 
