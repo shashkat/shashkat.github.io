@@ -18,7 +18,7 @@ img {
 <h2>Center an Image</h2>
 <p>To center an image, set left and right margin to auto, and make it into a block element.</p>
 
-<img src="my pic.JPG" alt="ME" style="width:50%;">
+<img src="my pic compressed.jpg" alt="ME" style="width:50%;">
 
 </body>
 </html> -->
