@@ -1,8 +1,13 @@
 body{
-     margin:40px;
+     margin:120px;
      background-color: grey;
      text-align: justify;
      /* font-style: oblique; */
-     font-size:x-large;
-     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+     font-size:large;
+     font-family:'Courier New', Courier, monospace;
+     margin-top: 80px;
+}
+p{
+     /* column-count: 2; */
+     /* text-shadow: 2px 2px purple; */
 }
