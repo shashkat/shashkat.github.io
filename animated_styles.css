@@ -6,22 +6,32 @@
    
    body {
      margin: 0;
+     margin-top: 0;
      margin-left: 150;
      margin-right: 150;
      font-family: "Source Sans Pro", sans-serif;
-     min-height: 100vh;
+     min-height: 0vh;
      display: grid;
      place-content: center;
      text-align: justify;
      background: var(--bg-color);
    }
-   
+   p {
+     font-family: monospace;
+     font-size: large;
+   }
+   a {
+     font-family: monospace;
+     font-size: large;
+     /* font-style:unset; */
+   }
    h1 {
      font-size: clamp(1rem, 3vw + 1rem, 4rem);
-     position: relative;
+     position: absolute;
      font-family: "Source Code Pro", monospace;
-     position: relative;
+     position: absolute;
      width: max-content;
+     place-content: center;
    }
    
    h1::before,
@@ -46,6 +56,7 @@
      animation: typewriter var(--typewriterSpeed)
          steps(var(--typewriterCharacters)) 1s forwards,
        blink 750ms steps(var(--typewriterCharacters)) infinite;
+       animation-iteration-count: 1;
    }
    
    .subtitle {
@@ -87,4 +98,41 @@
        color: teal;
      }
    }
+   .button {
+     display: flex;
+     height: 50px;
+     padding: 0;
+     background: #009578;
+     border: none;
+     outline: none;
+     border-radius: 5px;
+     overflow: hidden;
+     font-family: "Quicksand", sans-serif;
+     font-size: 16px;
+     font-weight: 500;
+     cursor: pointer;
+   }
+   
+   .button:hover {
+     background: #008168;
+   }
+   
+   .button:active {
+     background: #006e58;
+   }
+   
+   .button__text,
+   .button__icon {
+     display: inline-flex;
+     align-items: center;
+     padding: 0 24px;
+     color: #fff;
+     height: 100%;
+   }
+   
+   .button__icon {
+     font-size: 1.5em;
+     background: rgba(0, 0, 0, 0.08);
+   }
+   
    
