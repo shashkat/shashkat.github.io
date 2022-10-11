@@ -1,0 +1,21 @@
+body{
+     margin-top: 40px;
+}
+.heading {
+     height: 70px;
+     font-size: 50;
+     text-align: center;
+     font-family: 'Courier New', Courier, monospace;
+     animation-name: appear;
+     animation-duration: 2s;
+     font-display: ;
+}
+
+/* .heading:hover{
+     height: 30px;
+} */
+
+@keyframes appear{
+     from {font-size: 10;}
+     to {font-size: 50;}
+}
