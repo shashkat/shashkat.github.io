@@ -26,10 +26,11 @@
      /* font-style:unset; */
    }
    h1 {
+    margin-left: 240;
      font-size: clamp(1rem, 3vw + 1rem, 4rem);
-     position: absolute;
+     /* position: absolute; */
      font-family: "Source Code Pro", monospace;
-     position: absolute;
+     position: fixed;
      width: max-content;
      place-content: center;
    }
@@ -45,18 +46,22 @@
    }
    
    h1::before {
+     /* position: absolute; */
+     /* align: center; */
      background: var(--bg-color);
      animation: typewriter var(--typewriterSpeed)
        steps(var(--typewriterCharacters)) 1s forwards;
    }
    
    h1::after {
+     /* top: 50px; */
      width: 0.125em;
      background: black;
      animation: typewriter var(--typewriterSpeed)
          steps(var(--typewriterCharacters)) 1s forwards,
-       blink 750ms steps(var(--typewriterCharacters)) infinite;
-       animation-iteration-count: 1;
+       blink 750ms steps(var(--typewriterCharacters)) 9 alternate;
+       animation-fill-mode: both;
+       /* animation-iteration-count: 1; */
    }
    
    .subtitle {
