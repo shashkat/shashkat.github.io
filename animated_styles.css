@@ -11,8 +11,8 @@
      margin-right: 150;
      font-family: "Source Sans Pro", sans-serif;
      min-height: 0vh;
-     display: grid;
-     place-content: center;
+     display:block;
+     /* place-content: center; */
      text-align: justify;
      background: var(--bg-color);
    }
@@ -25,18 +25,17 @@
      font-size: large;
      /* font-style:unset; */
    }
-   h1 {
-    margin-left: 240;
-     font-size: clamp(1rem, 3vw + 1rem, 4rem);
-     /* position: absolute; */
+   .heading{
+    font-weight: bolder;
+     font-size: clamp(1rem, 3vw + 1rem, 5rem);
      font-family: "Source Code Pro", monospace;
-     position: fixed;
-     width: max-content;
-     place-content: center;
+     position: relative;
+     margin-top: 50;
+     margin-bottom: 50;
    }
    
-   h1::before,
-   h1::after {
+   heading::before,
+   heading::after {
      content: "";
      position: absolute;
      top: 0;
@@ -45,23 +44,19 @@
      left: 0;
    }
    
-   h1::before {
-     /* position: absolute; */
-     /* align: center; */
+   heading::before {
      background: var(--bg-color);
      animation: typewriter var(--typewriterSpeed)
        steps(var(--typewriterCharacters)) 1s forwards;
    }
    
-   h1::after {
-     /* top: 50px; */
+   heading::after {
      width: 0.125em;
      background: black;
      animation: typewriter var(--typewriterSpeed)
          steps(var(--typewriterCharacters)) 1s forwards,
        blink 750ms steps(var(--typewriterCharacters)) 9 alternate;
        animation-fill-mode: both;
-       /* animation-iteration-count: 1; */
    }
    
    .subtitle {
