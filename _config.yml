@@ -1,7 +1,8 @@
 # Site settings
 title: shashkat.github.io
 caption: Hey Guys!
-email: shashanksk31@gmail.com
+# email: shashanksk31@gmail.com
+email: https://formspree.io/f/mdordgar
 url: https://github.com/jeromelachaud/freelancer-theme
 description: "Portfolio website for Shashank Katiyar"
 keywords: "your keywords, separated by commas"
