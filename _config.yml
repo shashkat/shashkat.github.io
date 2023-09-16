@@ -7,7 +7,7 @@ url: https://github.com/jeromelachaud/freelancer-theme
 # url: https://formspree.io/f/mdordgar
 description: "Portfolio website for Shashank Katiyar"
 keywords: "your keywords, separated by commas"
-skills: "I am Shashank Katiyar, glad to see you here!!"
+skills: "I am Shashank Katiyar, glad to see you here!"
 meta_author: Katiyar Shashank
 
 # Google webmaster tools
@@ -46,8 +46,8 @@ social:
     url: https://twitter.com/shash_kat
   # - title: facebook
   #   url:
-  # - title: stack-overflow
-    # url: http://stackoverflow.com/questions/tagged/jekyll
+  - title: youtube
+    url: https://www.youtube.com/@shashankkatiyar31
   - title: linkedin
     url: https://www.linkedin.com/in/shashkat
   - title: github
