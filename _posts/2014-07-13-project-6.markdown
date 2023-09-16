@@ -1,11 +1,15 @@
 ---
 layout: default
 modal-id: 6
-date: 2014-07-15
+date: 2023-08-01
 img: slithbot.png
-alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+alt: Slither bot
+project-date: August 2023
+client: Ongoing self project
+category: Deep Learning and Computer Vision
+description: I really love this problem. I have been playing slither.io since some time now and I think it is an awesome game. There is basically one rule (a snake dies if its face touches another snake's body) and it gives rise to endless possibilities. I am currently trying to develop a bot of the game, with the aim to reach the top of the leaderboard.
+
+I broke the problem into multiple parts. First was the object detection of other snakes. I did this using the fact that snake's eyes in the game have complete black color (which other part of the screen dont have, making it easy). Now using just this info and generating the data by playing the game myself, the model is trained.
+
+Currently, the model is at a relatively basic stage, but I will update the results here as soon as it improves.
 ---
