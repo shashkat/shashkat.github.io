@@ -3,9 +3,15 @@ layout: default
 modal-id: 1
 date: 2023-09-16
 img: violin_plots.png
-alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Use this area of the page to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.
+alt: Violin Plots
+project-date: January 2023
+client: TenSixty Biosciences
+category: Cancer Subtyping (Bioinformatics)
+description: >
+
+    This was the first leg of my work at TenSixty Biosciences. I was tasked with cancer subtyping. We were looking for a cell-type characterization of cancer rather than an organ characterization, which is how cancer types are generally referred to currently. Certain rare cell types (ionocytes, neuroendocrine cells, and tuft cells) are linked to cancer origination. 
+    
+    <p><br> I found out the proportion of these cells in different types of cancer by first identifying the putative marker genes for them using a labeled single cell RNAseq data and then using those genes’ amount in the primary RNAseq bulk sample to find the presence of these cells. I developed a pipeline to visualize the results for 33 cancer types in our dataset (derived from TCGA) and compare them with the expression data of normal samples from the GTEX database. </p>
+
+    <p><br>Using it, one could compare the expression levels of all the cancers types (out of the 33) from a tissue with the expression levels from normal tissue, for any set of genes. Later, I expanded improved it to show expression levels at the isoform level rather than gene level. This I did by building the setup to run Kallisto (sequencing tool to process raw FASTQ files) on AWS parallel by dockerizing it and deploying the docker image on AWS parallel. Shown is an image of an example violin plot obtained using the tool.</p>
 ---
