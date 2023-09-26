@@ -1,8 +1,10 @@
 ---
 title: ":snake: Slithbot - slither.io bot"
 layout: post
-date: 2023-09-24 22:10
-tag: Object Detection, Reinforcement Learning
+date: 2023-03-28 22:10
+tag: 
+- Object Detection
+- Reinforcement Learning
 image: assets/images/slithbot.png
 # headerImage: true
 projects: true

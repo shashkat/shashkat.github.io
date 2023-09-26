@@ -1,8 +1,10 @@
 ---
 title: "🕸️ Predicting stability of Gene Networks"
 layout: post
-date: 2023-09-16 22:10
-tag: Neural Networks, Systems Biology
+date: 2023-01-31 22:10
+tag: 
+- Neural Networks
+- Systems Biology
 image: assets/images/gene_network.png
 # headerImage: true
 projects: true

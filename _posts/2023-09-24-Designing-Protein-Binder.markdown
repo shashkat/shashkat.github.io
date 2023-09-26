@@ -1,8 +1,10 @@
 ---
 title: "🪢 Designing Protein Binder for Transmembrane Protein"
 layout: post
-date: 2023-09-16 22:10
-tag: Protein Visualization, Drug Designing
+date: 2023-07-10 22:10
+tag: 
+- Protein Visualization
+- Drug Designing
 image: assets/images/final_binder.png
 # headerImage: true
 projects: true

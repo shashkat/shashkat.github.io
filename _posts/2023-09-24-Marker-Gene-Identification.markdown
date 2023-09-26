@@ -1,8 +1,10 @@
 ---
 title: ":dart: Identifying Marker Genes for rare cell types"
 layout: post
-date: 2023-07-15 22:10
-tag: Single Cell RNAseq, Cancer Subtyping
+date: 2023-05-20 22:10
+tag: 
+- Single Cell RNAseq
+- Cancer Subtyping
 image: assets/images/violin_plots.png
 # headerImage: true
 projects: true

@@ -1,8 +1,10 @@
 ---
 title: ":smoking: Inferring Evolution of Oral Cancer"
 layout: post
-date: 2023-09-16 22:10
-tag: Genome Analysis, Bioinformatics
+date: 2022-11-16 22:10
+tag: 
+- Genome Analysis
+- Bioinformatics
 image: assets/images/intratumour_het.png
 # headerImage: true
 projects: true

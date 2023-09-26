@@ -2,7 +2,9 @@
 title: "🦠 Visualizing transmembrane proteins"
 layout: post
 date: 2023-09-16 22:10
-tag: Protein Visualization, Bioinformatics
+tag: 
+- Protein Visualization
+- Bioinformatics
 image: assets/image/membrane_protein.png
 # headerImage: true
 projects: true
