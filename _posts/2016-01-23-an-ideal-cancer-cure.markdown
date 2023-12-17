@@ -15,7 +15,7 @@ externalLink: false
 
 ![Intratumour Heterogeneity](/assets/images/cancer_image.png)
 
-Okay so let's talk about cancer disease and why it is so difficult to find a cure for it. I will explain how (according to me) an ideal cure for cancer would look like it and along the way I would try to explain what would be the reasons behind each property of the cure. 
+Okay so let's talk about cancer disease and why it is so difficult to find a cure for it. I will explain how (according to me) an ideal cure for cancer would look like, and along the way I would try to explain what would be the reasons behind each property of the cure. 
 NOTE: I may miss some high level details of the things I state here either because of my lack of complete knowledge or intention of skipping over the intricate details. Anyway, I will do my best to ensure whatever I write here, will be correct to the best of my knowledge. 
 
 With that said, lets go.
