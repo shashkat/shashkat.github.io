@@ -1,7 +1,7 @@
 ---
 title: 'Thinking about Backpropagation and Computation Graph in Pytorch'
 date: 2025-06-19
-permalink: /posts/2012/08/backprop-in-pytorch/
+permalink: posts/backprop-in-pytorch/
 tags:
   - Visualization
   - Pytorch
