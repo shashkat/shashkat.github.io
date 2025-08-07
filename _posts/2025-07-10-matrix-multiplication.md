@@ -83,7 +83,7 @@ w \cdot
 \end{pmatrix}
 $$
 
-In the form of an animation, the methods would look like following:
+<!-- In the form of an animation, the methods would look like following: -->
 
 
 <!-- 
