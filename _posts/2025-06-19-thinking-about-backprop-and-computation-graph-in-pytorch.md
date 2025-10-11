@@ -4,7 +4,7 @@ date: 2025-06-19
 permalink: posts/backprop-in-pytorch/
 tags:
   - Visualization
-  - Pytorch
+  - PyTorch
 ---
 
 Guide to thinking about what happens when one calls `tensor.backward()` in pytorch.

@@ -3,7 +3,7 @@ title: 'Notes about in-place operations on tensors in PyTorch'
 date: 2025-08-05
 permalink: posts/inplace-operations/
 tags:
-  - Pytorch
+  - PyTorch
 ---
 
 Notes about some possible in-place operation cases with tensors in pytorch.
