@@ -49,15 +49,15 @@ Then, the function that we will profile. Simply, this function performs a transf
 ``` python
 # The function we want to profile.
 def inner(sender_streamed = False, receiver_streamed = False, non_blocking = True):
-	# according to values of arguments, we do the transfer in appropriate context
-	if sender_streamed and receiver_streamed:
-		with torch.cuda.stream(s0), torch.cuda.stream(s1):
-			A_transferred = A.to(device, non_blocking = non_blocking) # having a separate argument for non_blocking as want to test if non-blocking effects cpu behaviour only, or effects gpus also in any direct way
-        	secondary_stream0_event = s0.record_event() # create an event and record it (imagine record here like a screenshot, as it corresponds to a single timepoint) in secondary stream on gpu0 (s0), which can be used later for synchronization or timing purposes.
-        	secondary_stream1_event = s1.record_event() # create an event and record it (imagine record here like a screenshot, as it corresponds to a single timepoint) in secondary stream on gpu1 (s1), which can be used later for synchronization or timing purposes.
-        	# the purpose of creating these events is that I can synchronize them with cpu at the
-        	# end of this function and ensure that profiling is done till both of them have been 
-        	# reached which means that the transfer is done
+    # according to values of arguments, we do the transfer in appropriate context
+    if sender_streamed and receiver_streamed:
+        with torch.cuda.stream(s0), torch.cuda.stream(s1):
+            A_transferred = A.to(device, non_blocking = non_blocking) # having a separate argument for non_blocking as want to test if non-blocking effects cpu behaviour only, or effects gpus also in any direct way
+            secondary_stream0_event = s0.record_event() # create an event and record it (imagine record here like a screenshot, as it corresponds to a single timepoint) in secondary stream on gpu0 (s0), which can be used later for synchronization or timing purposes.
+            secondary_stream1_event = s1.record_event() # create an event and record it (imagine record here like a screenshot, as it corresponds to a single timepoint) in secondary stream on gpu1 (s1), which can be used later for synchronization or timing purposes.
+            # the purpose of creating these events is that I can synchronize them with cpu at the
+            # end of this function and ensure that profiling is done till both of them have been 
+            # reached which means that the transfer is done
     if sender_streamed and not receiver_streamed:
     	with torch.cuda.stream(s0):
 			A_transferred = A.to(device, non_blocking = non_blocking) # having a separate argument for non_blocking as want to test if non-blocking effects cpu behaviour only, or effects gpus also in any direct way
