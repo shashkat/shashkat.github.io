@@ -15,7 +15,7 @@ In [this](https://docs.pytorch.org/tutorials/intermediate/pinmem_nonblock.html) 
 
 ### Experiment Setup
 
-The idea is simple: In an instance with 2 GPUs (lets call them gpu0 and gpu1), store a tensor (A) in gpu0, and another tensor (B) in gpu1. Then run the .to() method to transfer it to gpu1, and also run a command to multiply B by itself. If the transfer was blocking, the multiplication will happen just after the transfer finishes, else the multiplication and transfer will have some overlap in time.
+The idea is simple: In an instance with 2 GPUs (lets call them gpu0 and gpu1), store a tensor (A) in gpu0, and another tensor (B) in gpu1. Then run the .to() method to transfer A to gpu1, and also run a command to multiply B by itself. If the transfer was blocking, the multiplication will happen just after the transfer finishes, else the multiplication and transfer will have some overlap in time.
 
 First, make the necessary imports and initialization
 ``` python
@@ -49,10 +49,6 @@ Then, the function that we will profile. Simply, this function performs a transf
 ``` python
 # The function we want to profile.
 def inner(sender_streamed = False, receiver_streamed = False, non_blocking = True):
-	# sender_streamed = False
-	# receiver_streamed = True
-	# non_blocking = True
-
 	# according to values of arguments, we do the transfer in appropriate context
 	if sender_streamed and receiver_streamed:
 		with torch.cuda.stream(s0), torch.cuda.stream(s1):
@@ -133,10 +129,10 @@ When we look at the traces in `chrome://tracing/`, we get the following results.
 Traces for first 3 conditions with non_blocking True shows no parallelization:
 ![first 3 conditions with non_blocking True](/images/traces_gpu_gpu_transfer1.png "Traces for first 3 conditions with non_blocking True")
 
-With the transfer happening in the context of streams on both devices, we observe parallelization:
+With the transfer happening in the context of secondary streams on both devices, we observe parallelization:
 ![with both streams, we observe parallelization](/images/traces_gpu_gpu_transfer_bothstreamed.png "With both streams, we observe parallelization")
 
-Interestingly, when non_blocking = False also and both streams on, we observe parallelization:
+Interestingly, when non_blocking = False also and both streams on, we observe parallelization. I need to understand as to why this is happening as I expected the non-blocking to make the cpu main thread wait till the transfer was complete, hence the multiplication job wouldn't have even been submitted to the gpu1 before the tranfer, but that is not what we see:
 ![Both streams in case of non-blocking = False also gives parallelization](/images/traces_gpu_gpu_transfer_nonblocking_false.png "Both streams in case of non-blocking = False also gives parallelization")
 
 ### Conclusions
