@@ -132,7 +132,7 @@ Traces for first 3 conditions with non_blocking True shows no parallelization:
 With the transfer happening in the context of secondary streams on both devices, we observe parallelization:
 ![with both streams, we observe parallelization](/images/traces_gpu_gpu_transfer_bothstreamed.png "With both streams, we observe parallelization")
 
-Interestingly, when non_blocking = False also and both streams on, we observe parallelization. I need to understand as to why this is happening as I expected the non-blocking to make the cpu main thread wait till the transfer was complete, hence the multiplication job wouldn't have even been submitted to the gpu1 before the tranfer, but that is not what we see:
+Also, when non_blocking = False and both streams on, we observe parallelization. This is because the non_blocking argument has a role only when the CPU is involved in the transfer. If the transfer is between different GPUs, the non_blocking argument doesn't have any effect (https://forums.developer.nvidia.com/t/are-cudamemcpy-and-cudamalloc-blocking-synchronous/308368).
 ![Both streams in case of non-blocking = False also gives parallelization](/images/traces_gpu_gpu_transfer_nonblocking_false.png "Both streams in case of non-blocking = False also gives parallelization")
 
 ### Conclusions
@@ -142,3 +142,4 @@ Hence, I was able to study about some intricacies of transferring data between G
 ### References
 
 - https://docs.pytorch.org/tutorials/intermediate/pinmem_nonblock.html
+- https://forums.developer.nvidia.com/t/are-cudamemcpy-and-cudamalloc-blocking-synchronous/308368
