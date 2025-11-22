@@ -9,11 +9,11 @@ tags:
 
 Summarising results from my experiments in transferring data (pytorch tensors) between GPUs in a fully parallel fashion, i.e. non-blocking on host CPU, and also on the sender and receiver GPUs.
 
-### Introduction 
+## Introduction 
 
 In [this](https://docs.pytorch.org/tutorials/intermediate/pinmem_nonblock.html) pytorch tutorial, they explain many important concepts about memory storage on CPU, the asynchronicity of GPU operations in PyTorch, and transferring data between CPU and GPU (and how to make it parallelized). However, they don't touch upon the topic of making transfer between two GPUs parallelized. Here, I just talk about some experiments I did for the same and corresponding results (from pytorch profiler).
 
-### Experiment Setup
+## Experiment Setup
 
 The idea is simple: In an instance with 2 GPUs (lets call them gpu0 and gpu1), store a tensor (A) in gpu0, and another tensor (B) in gpu1. Then run the .to() method to transfer A to gpu1, and also run a command to multiply B by itself. If the transfer was blocking, the multiplication will happen just after the transfer finishes, else the multiplication and transfer will have some overlap in time.
 
@@ -122,7 +122,7 @@ for i in [True, False]:
 			benchmark_with_profiler(sender_streamed=i, receiver_streamed=j, non_blocking=k)	
 ```
 
-### Results
+## Results
 
 When we look at the traces in `chrome://tracing/`, we get the following results.
 
@@ -135,11 +135,32 @@ With the transfer happening in the context of secondary streams on both devices,
 Also, when non_blocking = False and both streams on, we observe parallelization. This is because the non_blocking argument has a role only when the CPU is involved in the transfer. If the transfer is between different GPUs, the non_blocking argument doesn't have any effect (https://forums.developer.nvidia.com/t/are-cudamemcpy-and-cudamalloc-blocking-synchronous/308368).
 ![Both streams in case of non-blocking = False also gives parallelization](/images/traces_gpu_gpu_transfer_nonblocking_false.png "Both streams in case of non-blocking = False also gives parallelization")
 
-### Conclusions
+## When performing computations on sending GPU while transfer
 
-Hence, I was able to study about some intricacies of transferring data between GPUs in a parallelized fashion. We need to do the transfer in the context of secondary streams on both sender and receiver GPUs to be able to achieve parallelization in the transfer of data.
+All the above analysis takes a look at the GPU on the receiving end for the data transfer and its availability to do computations while the transfer is happening. However, I also did the same tests for when the multiplications were done on the GPU on the sending end. For this, I just had to modify 2 lines in the above code (making the tensor B reside in the gpu0 instead of gpu1, and capturing event to synchronize in gpu0 instead of gpu1 in inner function):
 
-### References
+``` python
+# B = torch.randn(1024**2 * 10, device="cuda:1") # old line
+B = torch.randn(1024**2 * 10, device="cuda:0") # now the tensor B resides in GPU0
+```
+
+``` python
+def inner(...):
+    ...
+    # base_stream_event = torch.cuda.current_stream(device = device).record_event() # old line
+    base_stream_event = torch.cuda.current_stream(device = torch.device('cuda', 0)).record_event() # Capturing event to synchronize in gpu0 instead of gpu1 in inner function
+    ...
+```
+
+The results for this indicated that for the sender GPU to be available for other computations during the transfer, only a secondary stream on the sender is required but not necessarily on the receiver:
+
+![when multiplication on sender during transfer](/images/traces_gpu_gpu_transfer_multiplyonsender.png "When multiplication on sender during transfer")
+
+## Conclusions
+
+Hence, I was able to study about some intricacies of transferring data between GPUs in a parallelized fashion. We need to do the transfer in the context of secondary streams on both sender and receiver GPUs to be able to do simultaneous computations on receiving GPU, but just a secondary stream on the sender is required to be able to do simulataneous computations on sending GPU.
+
+## References
 
 - https://docs.pytorch.org/tutorials/intermediate/pinmem_nonblock.html
 - https://forums.developer.nvidia.com/t/are-cudamemcpy-and-cudamalloc-blocking-synchronous/308368
