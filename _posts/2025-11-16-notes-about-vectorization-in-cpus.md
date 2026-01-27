@@ -6,7 +6,7 @@ tags:
   - Hardware
 ---
 
-Some notes while thinking about vectorization and its connection with CPU clock rate
+Some notes while thinking about vectorization and its connection with CPU clock rate.
 
 ## Introduction
 
